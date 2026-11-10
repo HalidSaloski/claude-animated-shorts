@@ -26,6 +26,14 @@ User rules that apply:
 - Save after every step.
 - "Just do it" once the script is approved.
 
+## Local setup (this PC, set up 2026-11-10)
+- **Remotion project:** `C:\Shorts\remotion-shorts`. Bridge source in `src/videos/bridge/`, `BridgeShort` registered in `src/Root.tsx`, helpers in `scripts/`. Run all render and still commands from this folder.
+- **Kenney props:** the 26 models from `KENNEY` in world.ts (plus `Textures/colormap.png`) are in `public/bridge/kenney/`. The full CC0 Nature Kit and Fantasy Town Kit are unzipped in `C:\Shorts\kenney\`, ready for more props.
+- **Temp folder:** `C:\Shorts\remotion-tmp`. bridge-stills.mjs uses it by default. For CLI renders, set `$env:TEMP=$env:TMP='C:\Shorts\remotion-tmp'` first. Clear old bundles there when nothing is rendering.
+- **Library versions (must stay):** React 18, `@react-three/fiber` 8, `@react-three/postprocessing` 2. With React 19 / fiber 9 / postprocessing 3, the EffectComposer renders a blank frame. three 0.187 works but logs "PCFSoftShadowMap has been removed" and falls back to PCF shadows.
+- **Browser:** Google Chrome isn't installed, so bridge-stills.mjs falls back to Remotion's own Chrome Headless Shell. Pass `--gl=angle` to `npx remotion still/render` (remotion.config.ts sets it too).
+- **Tools:** Node 24, Python 3.14 (numpy, scipy, Pillow), ffmpeg 9. Only one drive (C:).
+
 ## Pipeline
 1. **Topic and facts.** Pick one surprising true story with a physical cause and effect (it should be visual), plus a simple everyday analogy that explains it.
    - Write the facts with their source at the top of `SCRIPT.md`.
